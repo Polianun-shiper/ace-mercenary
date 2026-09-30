@@ -1,0 +1,149 @@
+{
+ "ls": {
+  "staticShadow": "on",
+  "csm": "off",
+  "selfShadow": null,
+  "selfShadowMap": null,
+  "presetVersion": "3"
+ },
+ "flags": {
+  "mobileMode": false,
+  "csmEnabled": false,
+  "staticShadowEnabled": true,
+  "projShadowOn": true,
+  "hasCsmObj": false,
+  "hasSelfShadowLight": false,
+  "hasLegacyAircraftShadowLight": false,
+  "selfShadowPlayerOnly": false,
+  "sunCastShadow": true,
+  "sunMapSize": 4096,
+  "sunAutoUpdate": false,
+  "shadowMapType": 1
+ },
+ "projShadow": {
+  "present": true,
+  "uPSxOn": 1,
+  "uPSxStrength": 1,
+  "injectedMats": 205,
+  "injectedMeshesCast": 199,
+  "injectedMeshesRecv": 199,
+  "samples": [
+   "vehicle#airbrake_l2_1_0:MeshStandardMaterial",
+   "vehicle#airbrake_l3_2_0:MeshStandardMaterial",
+   "vehicle#airbrake_l6_3_0:MeshStandardMaterial",
+   "vehicle#airbrake_r6_4_0:MeshStandardMaterial",
+   "vehicle#airbrake_r3_5_0:MeshStandardMaterial",
+   "vehicle#airbrake_r2_6_0:MeshStandardMaterial"
+  ]
+ },
+ "playerMeshes": {
+  "meshN": 210,
+  "castN": 199,
+  "recvN": 199
+ },
+ "programs": {
+  "count": 77,
+  "worst5": [
+   {
+    "name": "CloudsMaterial",
+    "usedTimes": 1,
+    "uniforms": 123,
+    "samplers": 10,
+    "samplerNames": [
+     "transmittance_texture",
+     "irradiance_texture",
+     "scattering_texture",
+     "single_mie_scattering_texture",
+     "localWeatherTexture",
+     "depthBuffer",
+     "stbnTexture",
+     "shapeTexture",
+     "shapeDetailTexture",
+     "shadowBuffer"
+    ]
+   },
+   {
+    "name": "",
+    "usedTimes": 8,
+    "uniforms": 90,
+    "samplers": 9,
+    "samplerNames": [
+     "uPSxMap",
+     "uCTex",
+     "map",
+     "aoMap",
+     "envMap",
+     "dfgLUT",
+     "directionalShadowMap",
+     "normalMap",
+     "roughnessMap"
+    ]
+   },
+   {
+    "name": "",
+    "usedTimes": 6,
+    "uniforms": 89,
+    "samplers": 9,
+    "samplerNames": [
+     "uPSxMap",
+     "uCTex",
+     "map",
+     "aoMap",
+     "envMap",
+     "dfgLUT",
+     "directionalShadowMap",
+     "normalMap",
+     "roughnessMap"
+    ]
+   },
+   {
+    "name": "",
+    "usedTimes": 4,
+    "uniforms": 79,
+    "samplers": 8,
+    "samplerNames": [
+     "uCTex",
+     "map",
+     "aoMap",
+     "emissiveMap",
+     "envMap",
+     "dfgLUT",
+     "directionalShadowMap",
+     "normalMap"
+    ]
+   },
+   {
+    "name": "",
+    "usedTimes": 4,
+    "uniforms": 78,
+    "samplers": 8,
+    "samplerNames": [
+     "uCTex",
+     "map",
+     "aoMap",
+     "emissiveMap",
+     "envMap",
+     "dfgLUT",
+     "directionalShadowMap",
+     "normalMap"
+    ]
+   }
+  ]
+ },
+ "shadowInfo": "shadow source : static sunLight\nmap size      : 4096²\nbias          : -0.0005\nnormalBias    : 0.0800\ncamera near/far: 100.0 / 12000.0\nfilter type   : PCF\ncsm cascades  : 0\ndepth pass side: side=DoubleSide shadowSide=(auto)\ncastShadow mesh: 893\ndecal self-shadow: ON · 注入材质 228 个 (只压直接光, 保留 IBL)\nviewer bound to : (off)"
+}
+[gl] 着色器/GL 错误 10 条
+   [warning] THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision
+(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision
+(210,82-106): warning X4122:
+   [warning] THREE.WebGLProgram: Program Info Log: (514,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+   [warning] THREE.WebGLProgram: Program Info Log: (513,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+   [warning] THREE.WebGLProgram: Program Info Log: (361,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+(361,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have un
+   [warning] THREE.WebGLProgram: Program Info Log: (334,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+(334,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have un
+   [warning] THREE.WebGLProgram: Program Info Log: (334,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+(334,12-86): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have un
+[console] error/warning 共 12 条
+   [exception] Uncaught SyntaxError: Unexpected token '<'
+   [warning] [GameApp] startMission() timed out after 8s — force-entering playing phase

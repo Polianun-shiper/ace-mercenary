@@ -1,0 +1,1403 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ==========================================================================
+   AMBER CRT 设计系统 —— 90 年代军用战斗电脑终端(单色琥珀磷光)
+   ==========================================================================
+   设计约束(用户指定):
+   - 琥珀四阶梯为主色, 红/绿【仅作语义色】(警示/就绪), 绝不做装饰色;
+   - 无现代圆角、无玻璃拟态(backdrop-filter blur)、无蓝紫霓虹;
+   - 字体只用系统等宽(Consolas / DejaVu Sans Mono / Liberation Mono),
+     零外部字体 —— 单文件构建(file://)与离线部署同样成立;
+   - CRT 效果全部参数化, 便于"只改 CSS 不改结构"的迭代。
+   命名: --crt-<语义>。色阶说明见每行注释。
+   ========================================================================== */
+:root {
+  /* 字号 / 字距阶梯(标签下限 9px, 再小影响可读性) */
+  --crt-fs-h0: 3.25rem;
+  --crt-fs-h1: 1.125rem;
+  --crt-fs-body: 0.8125rem;
+  --crt-fs-data: 0.75rem;
+  --crt-fs-label: 0.625rem;
+  --crt-fs-micro: 0.5625rem;
+  --crt-ls-h1: 0.18em;
+  --crt-ls-label: 0.24em;
+  --crt-ls-body: 0.08em;
+
+  /* ---------- 琥珀四阶梯(亮→深) ---------- */
+  --crt-amber-hi: #ffd27a;   /* 峰值/高光: 反白块字色、关键数字 */
+  --crt-amber: #ffb000;      /* 主橙: 标题、选中项、雷达扫描、光标、亮线 */
+  --crt-amber-bright: #ff9e2c; /* 主橙的"电器峰值"变体: LED、走带亮带 */
+  --crt-amber-dim: #c2610a;  /* 暗橙: 次级文字、非选中项、刻度 */
+  --crt-amber-deep: #8a3d06; /* 三级: 网格线、分隔线、禁用 */
+  --crt-amber-ghost: #4a2606; /* 极暗: 底纹、扫描网格、空槽 */
+
+  /* ---------- 背景/面板(暖棕黑, 避免死黑) ---------- */
+  --crt-bg: #0f0900;         /* 整屏背景 */
+  --crt-bg-screen: #070300;  /* 显像管最深处(屏幕四角) */
+  --crt-panel: #171006;      /* 常规面板底 */
+  --crt-panel-2: #1f1608;    /* 抬高面板(抽屉/选中行底) */
+  --crt-panel-3: #2a1d08;    /* 面板高光边/键帽 */
+  --crt-line: rgba(255, 176, 0, 0.24);       /* 常规描边 */
+  --crt-line-strong: rgba(255, 176, 0, 0.48); /* 强调描边(选中/焦点) */
+  --crt-ink: #1c1000;        /* 反白块上的字色(暖黑, 非纯黑) */
+
+  /* ---------- 语义色(仅两种, 禁止装饰化) ---------- */
+  --crt-red: #ff3b1f;        /* 警告: CAUTION / 失败 / RWR / REC */
+  --crt-red-light: #ff6a5c;  /* 警告文字(小字号用, 面板上 6.35:1/底上 7.05:1) */
+  --crt-red-dim: #a3200c;
+  --crt-green: #7cff6b;      /* 就绪: 通过 / 友军 / 在线 */
+  --crt-green-dim: #3fbe4e;
+
+  /* ---------- CRT 效果参数(改这里即可整体调校) ---------- */
+  --crt-scan-pitch: 3px;     /* 扫描线周期(3px = 密集又不糊字) */
+  --crt-scan-alpha: 0.11;    /* 暗线强度(0.10-0.14 为可读区间) */
+  --crt-glow: 0 0 4px rgba(255, 176, 0, 0.55), 0 0 14px rgba(255, 176, 0, 0.28);
+  --crt-glow-strong: 0 0 5px rgba(255, 176, 0, 0.75), 0 0 18px rgba(255, 176, 0, 0.45), 0 0 38px rgba(255, 130, 0, 0.22);
+  --crt-chroma-x: 1px;       /* 色差偏移量(仅用于大标题) */
+  --crt-grain-alpha: 0.06;   /* 噪点强度 */
+  --crt-vignette: 0.6;       /* 暗角强度 */
+  --crt-flicker-alpha: 0.035;/* 亮度抖动幅度(刻意压低: 高频闪烁易晕) */
+  --crt-curve: 1.6%;         /* 轻微桶形畸变(仅内缩+弧光, 不做 displacement) */
+
+  /* 字体: 系统等宽(零体积, 无 CDN) */
+  --font-mono: 'DejaVu Sans Mono', Consolas, 'Liberation Mono', 'Courier New', ui-monospace, monospace;
+  --crt-font-label: 'Arial Narrow', 'Liberation Sans Narrow', 'DejaVu Sans Condensed', Consolas, monospace;
+}
+
+@layer components {
+  /* ---------- 终端文字语义 ---------- */
+  .crt-text { color: var(--crt-amber); letter-spacing: var(--crt-ls-body); }
+  .crt-text--hi { color: var(--crt-amber-hi); }
+  .crt-text--dim { color: var(--crt-amber-dim); }
+  .crt-text--deep { color: var(--crt-amber-deep); }
+  .crt-text--glow { text-shadow: var(--crt-glow); }
+  .crt-text--glow-strong { text-shadow: var(--crt-glow-strong); }
+  /* 标签层: 压缩字体 + 大字距, 只用于丝印/刻度/提示 */
+  .crt-label {
+    font-family: var(--crt-font-label);
+    font-size: var(--crt-fs-label);
+    letter-spacing: var(--crt-ls-label);
+    text-transform: uppercase;
+    color: var(--crt-amber-dim);
+  }
+  /* 数据层: 等宽数字对齐 */
+  .crt-data {
+    font-family: var(--font-mono);
+    font-size: var(--crt-fs-data);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: var(--crt-amber);
+  }
+  /* 反白选中态: 琥珀底 + 暖黑字 + 直角 */
+  .crt-invert {
+    background: var(--crt-amber);
+    color: var(--crt-ink);
+    box-shadow: 0 0 12px rgba(255, 176, 0, 0.45);
+  }
+  /* 终端线框(直角, 无圆角) */
+  .crt-box { border: 1px solid var(--crt-line); background: rgba(10, 6, 1, 0.55); }
+  .crt-box--strong { border-color: var(--crt-line-strong); }
+  /* 语义色(仅警告/就绪) */
+  /* 注意: --crt-red 在面板底上只有 5.0:1, 且这是最小字号(.crt-label 10px),
+     小字要用 pre-brighten 的 --crt-red-light(面板上 6.35:1)才稳过 AA。 */
+  .crt-warn { color: var(--crt-red-light); }
+  .crt-warn--deep { color: var(--crt-red); }
+  .crt-ready { color: var(--crt-green); }
+
+  /* ---------- CRT 显像管外框(轻微畸变 + 玻璃弧光 + 内阴影) ---------- */
+  .crt-frame { position: relative; background: var(--crt-bg); }
+  .crt-frame::after {
+    content: '';
+    position: absolute;
+    inset: calc(var(--crt-curve) * -0.5);
+    pointer-events: none;
+    z-index: 60;
+    border-radius: 14px / 22px; /* 显像管四角物理弧(玻璃管壳, 非 UI 圆角) */
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 176, 0, 0.07),
+      inset 0 0 60px rgba(0, 0, 0, 0.55),
+      inset 0 0 140px rgba(0, 0, 0, 0.35);
+    background: radial-gradient(
+      128% 118% at 50% 50%,
+      transparent 62%,
+      rgba(0, 0, 0, 0.18) 82%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+  }
+
+  /* ---------- 扫描线(3px 周期, 密集但不糊字) ---------- */
+  .crt-scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0 calc(var(--crt-scan-pitch) - 1px),
+      rgba(0, 0, 0, var(--crt-scan-alpha)) calc(var(--crt-scan-pitch) - 1px) var(--crt-scan-pitch)
+    );
+  }
+
+  /* ---------- 暗角 ---------- */
+  .crt-vignette {
+    background-image: radial-gradient(
+      118% 96% at 50% 44%,
+      transparent 44%,
+      rgba(0, 0, 0, calc(var(--crt-vignette) * 0.55)) 76%,
+      rgba(0, 0, 0, var(--crt-vignette)) 100%
+    );
+  }
+
+  /* ---------- 色差(仅大标题用) ---------- */
+  .crt-chroma {
+    text-shadow:
+      calc(var(--crt-chroma-x) * -1) 0 0 rgba(255, 60, 60, 0.38),
+      var(--crt-chroma-x) 0 0 rgba(60, 200, 255, 0.30),
+      0 1px 0 rgba(0, 0, 0, 0.85);
+  }
+
+  /* ---------- 字体/光标/面板等基础件 ---------- */
+  /* 终端内一律系统等宽(覆盖 Geist 映射, 单文件零字体体积) */
+  .crt-font { font-family: var(--font-mono); }
+  /* 本应用 html/body 是 user-select:none, 终端只读文本要显式可选中 */
+  .crt-select { user-select: text; -webkit-user-select: text; }
+  .crt-caret::after {
+    content: '\2588'; /* 全角实心块光标 */
+    margin-left: 0.08em;
+    animation: crt-caret-blink 1.06s steps(1, end) infinite;
+  }
+  .crt-panel {
+    background: linear-gradient(180deg, rgba(31, 22, 8, 0.72) 0%, rgba(12, 7, 1, 0.72) 100%);
+    border: 1px solid var(--crt-line);
+  }
+  .crt-panel-head {
+    background: linear-gradient(180deg, rgba(255, 176, 0, 0.10) 0%, rgba(255, 176, 0, 0.02) 100%);
+    border-bottom: 1px solid var(--crt-line);
+  }
+  /* 面板四角定位角标 —— 终端 HUD 语汇, 替代圆角 */
+  .crt-corner { position: relative; }
+  .crt-corner::before {
+    content: '';
+    position: absolute;
+    left: -1px; top: -1px;
+    width: 9px; height: 9px;
+    border-left: 1px solid var(--crt-amber);
+    border-top: 1px solid var(--crt-amber);
+    pointer-events: none;
+  }
+  .crt-corner::after {
+    content: '';
+    position: absolute;
+    right: -1px; bottom: -1px;
+    width: 9px; height: 9px;
+    border-right: 1px solid var(--crt-amber);
+    border-bottom: 1px solid var(--crt-amber);
+    pointer-events: none;
+  }
+  .crt-key {
+    border: 1px solid var(--crt-line);
+    background: linear-gradient(180deg, var(--crt-panel-2) 0%, var(--crt-panel) 100%);
+    color: var(--crt-amber-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    transition: transform 90ms linear, background-color 120ms linear, color 120ms linear;
+  }
+  .crt-key:hover { background: var(--crt-panel-3); color: var(--crt-amber); }
+  .crt-key:active { transform: translateY(1px); }
+  .crt-key--on {
+    background: linear-gradient(180deg, var(--crt-amber) 0%, #d98f00 100%);
+    color: var(--crt-ink);
+    border-color: var(--crt-amber-hi);
+  }
+  /* 扫描线内的角标: 反白直角块(选中标记) */
+  .crt-tag {
+    background: var(--crt-amber);
+    color: var(--crt-ink);
+    padding: 0 3px;
+    font-weight: 700;
+  }
+  /* 圆形雷达表(地图角落的战术显示器):扫描前沿在表盘内旋转。
+     扫描前沿必须限制在圆形表盘内 —— 之前把扇形铺在整块矩形地图上,
+     会在暗底上形成一块硬边三角形, 而且每帧角度不同, 看起来像渲染故障。 */
+  .crt-radar {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--crt-line);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 176, 0, 0.05) 0%, rgba(8, 4, 0, 0.9) 68%, rgba(4, 2, 0, 0.98) 100%);
+    box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.75);
+  }
+  .crt-sweep {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 200%; aspect-ratio: 1 / 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255, 176, 0, 0.34) 0deg,
+      rgba(255, 176, 0, 0.08) 1.8deg,
+      rgba(255, 176, 0, 0) 4deg,
+      rgba(255, 176, 0, 0) 360deg
+    );
+    animation: crt-sweep-spin 4.6s linear infinite;
+  }
+  /* 地图本体上的低速水平扫掠带(比旋转扇形安静得多, 只提示"屏幕在工作") */
+  .crt-scanband {
+    position: absolute;
+    left: 0; right: 0;
+    height: 22%;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 176, 0, 0) 0%,
+      rgba(255, 176, 0, 0.035) 45%,
+      rgba(255, 176, 0, 0.06) 50%,
+      rgba(255, 176, 0, 0.035) 55%,
+      rgba(255, 176, 0, 0) 100%
+    );
+    animation: crt-band-sweep 11s linear infinite;
+  }
+  /* ---------- 关卡内 HUD:终端面板(替代原 panel-glass 玻璃拟态) ----------
+     参考图(蓝色军用终端)的排版语汇:等宽字 + 1px 半透明描边分栏 + 数据表格 +
+     点线进度;这里换成琥珀 CRT 配色, 去掉 backdrop-blur / 圆角 / 投影。 */
+  .hud-panel {
+    background: linear-gradient(180deg, rgba(10, 6, 0, 0.62) 0%, rgba(5, 3, 0, 0.74) 100%);
+    border: 1px solid var(--crt-line);
+    box-shadow:
+      inset 0 0 18px rgba(255, 176, 0, 0.04),
+      0 2px 10px rgba(0, 0, 0, 0.45);
+  }
+  /* 面板内的分栏(数据表):细横线 + 只在必要时竖线 */
+  .hud-row {
+    border-top: 1px solid rgba(255, 176, 0, 0.16);
+  }
+  .hud-cell { border-left: 1px solid rgba(255, 176, 0, 0.16); }
+  /* 标签/数值两层(参考图左侧 data table 的排法) */
+  .hud-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--crt-amber-dim);
+    /* 压在明亮地形上时, 暗橙小字需要一层黑底影才读得清 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+  }
+  .hud-value {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.1em;
+    color: var(--crt-amber);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  }
+  /* 点线进度/分隔(参考图 "Verifying KDL Pool Data........ Update Success") */
+  .hud-dots {
+    flex: 1 1 auto;
+    min-width: 1.5rem;
+    align-self: center;
+    border-bottom: 1px dotted rgba(255, 176, 0, 0.42);
+  }
+
+  /* ---------- 橙色发光数字指示器(per user request: 速度/高度去掉黑框) ---------- */
+  .crt-gauge {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+  }
+  .crt-gauge__num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(34px, 3.6vw, 54px);
+    line-height: 0.9;
+    font-weight: 700;
+    color: var(--crt-amber-hi);
+    /* 发光数字:三层荧光 + 一层暗描边保证亮地形上也"立"得起来 */
+    text-shadow:
+      0 0 6px rgba(255, 176, 0, 0.95),
+      0 0 18px rgba(255, 176, 0, 0.7),
+      0 0 42px rgba(255, 140, 0, 0.4),
+      0 2px 3px rgba(0, 0, 0, 0.9);
+  }
+  .crt-gauge__unit {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--crt-amber-dim);
+    padding-bottom: 0.35rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+  }
+  /* ---------- 带框数字标签 (per user request: 速度/高度按参考图做成 SPEED/ALT 标签块) ----------
+     参考图里数字装在一个"标签框"里: 左侧竖线 + 上下横线 + 右端一个斜切尖角(右列镜像)。
+     纯 CSS 画, 不引资源: 用 clip-path 切出尖角, 边框用 background 渐变拼。 */
+  .crt-tagbox {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.1rem 0.75rem 0.15rem 0.6rem;
+    border: 1px solid rgba(255, 176, 0, 0.75);
+    background: rgba(255, 176, 0, 0.06);
+    box-shadow: 0 0 12px rgba(255, 176, 0, 0.18), inset 0 0 10px rgba(255, 176, 0, 0.08);
+    /* 右端尖角 */
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  }
+  .crt-tagbox--left {
+    /* 高度侧镜像: 尖角朝左 */
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+  }
+  .crt-tagbox__num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(26px, 2.6vw, 40px);
+    line-height: 1;
+    font-weight: 700;
+    color: var(--crt-amber-hi);
+    text-shadow:
+      0 0 6px rgba(255, 176, 0, 0.95),
+      0 0 18px rgba(255, 176, 0, 0.6),
+      0 2px 3px rgba(0, 0, 0, 0.9);
+  }
+  .crt-tagbox__unit {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--crt-amber-dim);
+  }
+  .crt-tape {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .crt-gauge__label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--crt-amber-dim);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+  }
+
+  /* ---------- 电影式字幕(per user request: 参考电影正规字幕, 不要黑字描边) ----------
+     用户反馈: 四向黑描边看起来像小游戏。正规影视字幕的做法是
+     **浅色字 + 半透明底条(或柔和投影)**, 字号要够大、行高放松。
+     所以这里:去掉硬描边, 改 42% 黑底条 + 柔和投影;字体走衬线正体
+     (Georgia/Times 一类), 与军用终端的等宽小字区分开 —— 字幕是"旁白层",
+     不是"面板层"。 */
+  .crt-subtitle {
+    font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+    font-size: clamp(20px, 1.9vw, 30px);
+    line-height: 1.42;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    color: #f7f4ee;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.42);
+    padding: 0.22em 0.7em;
+    border-radius: 2px;
+  }
+  /* 标题卡:比无线电字幕更大更重(电影开场标题的量级) */
+  .crt-subtitle--title {
+    font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+    font-size: clamp(30px, 4.2vw, 64px);
+    line-height: 1.18;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: #fffdf8;
+    text-shadow:
+      0 3px 14px rgba(0, 0, 0, 0.9),
+      0 0 34px rgba(255, 176, 0, 0.35);
+    background: none;
+    padding: 0;
+  }
+  /* 标题卡的琥珀小标(时间/代号行) */
+  .crt-subtitle--accent {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.05vw, 15px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--crt-amber-hi);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 14px rgba(255, 176, 0, 0.45);
+  }
+  /* 说话人标签(无线电) */
+  .crt-subtitle__spk {
+    font-family: var(--font-mono);
+    font-size: 0.7em;
+    letter-spacing: 0.14em;
+    color: var(--crt-amber);
+    margin-right: 0.6em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  }
+  /* 无线电按语义着色(仍是浅色+柔投影, 不回到硬描边) */
+  .crt-subtitle--enemy { color: #ffd9d2; }
+  .crt-subtitle--awacs { color: #ffe7bd; }
+  /* === §351 说话人名字按阵营着色(per user request: 从通用橙色改成区分敌我的红蓝) ===
+     原来 .crt-subtitle__spk 统一是 var(--crt-amber), 所以敌我名字一个色。
+     现在: 我方=蓝, 敌方=红, 管制/预警/旁白(awacs)=保持琥珀(它既不是敌也不是我)。
+     柔投影 + 一圈同色微光, 与字幕的影视质感一致(不用硬描边)。 */
+  .crt-subtitle__spk--ally {
+    color: #8fd0ff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 9px rgba(90, 165, 255, 0.5);
+  }
+  .crt-subtitle__spk--enemy {
+    color: #ff6a5c;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 9px rgba(255, 90, 70, 0.55);
+  }
+  .crt-subtitle__spk--awacs {
+    color: var(--crt-amber);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 9px rgba(255, 176, 0, 0.45);
+  }
+
+  /* ---------- 参考图语汇:分栏数据块 / 点线状态行 / 数据表 / 透视地板 ---------- */
+  /* 分栏:靠 1px 琥珀描边划分(参考图是绿色描边, 这里换琥珀), 不用填充面板 */
+  .crt-cols {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--crt-line);
+    background: rgba(6, 3, 0, 0.5);
+  }
+  .crt-col { border-left: 1px solid var(--crt-line); padding: 0.45rem 0.7rem; min-width: 0; }
+  .crt-col:first-child { border-left: 0; }
+  .crt-col__head {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--crt-amber-dim);
+    border-bottom: 1px solid var(--crt-line);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
+  }
+  /* 代码/读数行(参考图那种等宽密集文本) */
+  .crt-line {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    color: var(--crt-amber-dim);
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .crt-line--hot { color: var(--crt-amber); }
+  .crt-line--ok { color: var(--crt-green); }
+  /* 状态行(label ....... value) */
+  .crt-statusrow {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--crt-amber);
+  }
+  .crt-statusrow__k { color: var(--crt-amber-dim); text-transform: uppercase; letter-spacing: 0.2em; white-space: nowrap; }
+  .crt-statusrow__v { color: var(--crt-amber-hi); white-space: nowrap; }
+  /* 数据表(参考图的 ID/ADDR/SZ/CL 表) */
+  .crt-table { font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.04em; width: 100%; }
+  .crt-table th {
+    text-align: left;
+    font-weight: 400;
+    color: var(--crt-amber-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.5625rem;
+    padding: 0.15rem 0.5rem 0.15rem 0;
+    border-bottom: 1px solid var(--crt-line);
+    white-space: nowrap;
+  }
+  .crt-table td {
+    padding: 0.14rem 0.5rem 0.14rem 0;
+    color: var(--crt-amber);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255, 176, 0, 0.10);
+  }
+  .crt-table tr:last-child td { border-bottom: 0; }
+  .crt-table td.is-dim { color: var(--crt-amber-dim); }
+  .crt-table td.is-hi { color: var(--crt-amber-hi); }
+  .crt-table td.is-warn { color: var(--crt-red-light); }
+  /* 透视地板网格(参考图底部那圈梯形线框; 纯 CSS, 不参与布局/点击) */
+  .crt-floor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.5;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255, 176, 0, 0.07) 0 1px, transparent 1px 84px),
+      repeating-linear-gradient(0deg, rgba(255, 176, 0, 0.07) 0 1px, transparent 1px 62px);
+    transform: perspective(520px) rotateX(60deg) scale(1.55);
+    transform-origin: 50% 100%;
+    mask-image: linear-gradient(180deg, transparent 42%, #000 78%, #000 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 42%, #000 78%, #000 100%);
+  }
+
+  /* ---------- 其余界面沿用同一 CRT 观感 ---------- */
+  .tp-page { background: var(--crt-bg); color: var(--crt-amber); }
+  .tp-case {
+    background: linear-gradient(180deg, var(--crt-panel-3) 0%, var(--crt-panel) 100%);
+    border: 1px solid var(--crt-line);
+  }
+  .tp-case:hover {
+    border-color: var(--crt-amber);
+    box-shadow: 0 0 1px var(--crt-amber), inset 0 0 16px rgba(255, 176, 0, 0.10);
+  }
+}
+
+@keyframes crt-sweep-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes crt-band-sweep {
+  from { top: -22%; }
+  to { top: 100%; }
+}
+@keyframes crt-caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes crt-node-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+/* 开机自检: 荧光线从中间扫开 */
+@keyframes crt-boot-open {
+  0% { transform: scaleY(0.004); opacity: 0.85; }
+  55% { transform: scaleY(0.004); opacity: 0.85; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+.crt-node { animation: crt-node-blink 1.9s steps(1, end) infinite; }
+.crt-boot { animation: crt-boot-open 1.15s ease-out both; }
+
+/* 显像管上电后的低频亮度抖动(刻意压低幅度) */
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: calc(1 - var(--crt-flicker-alpha)); }
+  72% { opacity: 0.995; }
+}
+.crt-flicker { animation: crt-flicker 5.5s ease-in-out infinite; }
+
+/* ---------- CRT 断电: 画面纵向塌缩到中线 + 白闪 + 余辉渐暗 ---------- */
+.crt-poweroff {
+  transform-origin: 50% 50%;
+  animation: crt-poweroff 0.62s cubic-bezier(0.55, 0, 0.85, 0.4) forwards;
+}
+.crt-powerflash {
+  position: absolute;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 42% at 50% 50%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 200, 120, 0.75) 32%,
+    rgba(255, 176, 0, 0.25) 58%,
+    transparent 80%
+  );
+  animation: crt-powerflash 0.62s ease-out forwards;
+}
+@keyframes crt-poweroff {
+  0% { transform: scaleY(1) scaleX(1); filter: brightness(1); }
+  18% { transform: scaleY(0.86) scaleX(1.012); filter: brightness(1.9); }
+  52% { transform: scaleY(0.06) scaleX(1.05); filter: brightness(2.6); }
+  74% { transform: scaleY(0.012) scaleX(0.5); filter: brightness(2.2); }
+  100% { transform: scaleY(0.004) scaleX(0.02); filter: brightness(0.15); }
+}
+@keyframes crt-powerflash {
+  0% { opacity: 0; }
+  16% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* ==========================================================================
+   AMBER CRT 设计系统 —— 结束
+   ========================================================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    overscroll-behavior: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  canvas {
+    display: block;
+    touch-action: none;
+  }
+}
+
+/* === Game UI polish (per user request: 审美对标3A游戏) ===
+   Glass panels, glowing 3D buttons and entrance animations shared by the
+   menus, settings and HUD. Layout/positions are untouched — this layer only
+   upgrades the visual language. */
+@layer components {
+  /* Translucent dark-cyan glass surface with a soft inner glow. */
+  .panel-glass {
+    background: linear-gradient(180deg, rgba(14, 34, 56, 0.5) 0%, rgba(5, 10, 20, 0.62) 100%);
+    border: 1px solid rgba(92, 200, 255, 0.22);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.45),
+      0 10px 28px rgba(0, 0, 0, 0.35),
+      inset 0 0 28px rgba(92, 200, 255, 0.045);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  /* Hover-lift button base — pair with an accent border/glow. */
+  .btn-3d {
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      filter 0.2s ease;
+  }
+  .btn-3d:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+  }
+  .btn-3d:active {
+    transform: translateY(0px);
+    filter: brightness(0.95);
+  }
+  /* Soft current-color glow for headings/values. */
+  .glow-text {
+    text-shadow: 0 0 14px currentColor;
+  }
+  /* === HUD 阴影/毛玻璃增强 (per user request: ShadowKit 风格子集) ===
+     默认生效;html.hud-shadow-off 时(设置 skybound.hudShadow=off)回退到
+     上方基础定义 —— 增强全部为追加式,不改变任何布局尺寸。 */
+  html:not(.hud-shadow-off) .panel-glass {
+    backdrop-filter: blur(14px) saturate(1.15);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.5),
+      0 22px 48px rgba(0, 0, 0, 0.52),
+      0 5px 16px rgba(0, 0, 0, 0.38),
+      inset 0 0 34px rgba(92, 200, 255, 0.06),
+      inset 0 1px 0 rgba(190, 235, 255, 0.07);
+  }
+  html:not(.hud-shadow-off) .glow-text {
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 26px currentColor;
+  }
+  html:not(.hud-shadow-off) .btn-3d:hover {
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* ==========================================================================
+   磁带朋克(TAPE-PUNK)材质系统 —— 90 年代磁带机/机架音响写实风
+   ==========================================================================
+   全部用 CSS 梯度合成"实物"质感(拉丝铝、肋纹塑料、金属运输键、VFD 琥珀
+   数码管、卡带仓玻璃、VU 表、贴纸/警示条/条码、CRT 叠加),不引入任何外部
+   图片或字体 —— 单文件构建(file://)与离线部署同样成立。
+   命名前缀统一 `tp-`(tape-punk),只被主界面消费,不影响 HUD/编辑器。
+   ========================================================================== */
+@layer components {
+  /* ---------- 场景:暗室 + 冷反射 + 机箱投影 ---------- */
+  .tp-scene {
+    background-color: #060607;
+    background-image:
+      /* 顶部柔光箱(棚拍主光) */
+      radial-gradient(78% 52% at 50% -16%, rgba(255, 240, 214, 0.15) 0%, transparent 62%),
+      /* 环境主色 */
+      radial-gradient(125% 92% at 50% 32%, #302d28 0%, #1b1915 46%, #0b0b0c 82%, #050506 100%),
+      /* 左下方暖光溢出(台灯) */
+      radial-gradient(46% 40% at 6% 104%, rgba(255, 148, 46, 0.18), transparent 72%),
+      /* 右下方冷反射 */
+      radial-gradient(40% 34% at 95% 103%, rgba(96, 152, 240, 0.10), transparent 70%);
+  }
+  /* 顶部柔光箱反射(棚拍布光的标志性高光带) */
+  .tp-scene-sheen {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.02) 14%,
+      transparent 32%
+    );
+  }
+
+  /* ---------- 机箱外壳:深色肋纹塑料侧颊 ---------- */
+  .tp-cheek {
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.055) 0 1px,
+        rgba(0, 0, 0, 0.30) 1px 5px,
+        rgba(255, 255, 255, 0.012) 5px 6px
+      ),
+      linear-gradient(180deg, #23272b 0%, #16191c 42%, #0d0f11 100%);
+    box-shadow:
+      inset 0 0 34px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      0 26px 50px rgba(0, 0, 0, 0.62);
+  }
+
+  /* ---------- 前面板:阳极氧化拉丝铝(暖中性色 + 强光泽横扫) ---------- */
+  .tp-face {
+    background-color: #6e6f6b;
+    background-image:
+      /* 横向拉丝纹(0deg = 水平细线) */
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.085) 0 1px,
+        rgba(0, 0, 0, 0.055) 1px 2px,
+        rgba(255, 255, 255, 0.022) 2px 3px
+      ),
+      /* 宽幅金属光泽(棚拍高光横扫:一明一暗才有金属感) */
+      linear-gradient(
+        102deg,
+        rgba(255, 250, 240, 0.34) 0%,
+        rgba(255, 250, 240, 0.06) 12%,
+        rgba(0, 0, 0, 0.16) 28%,
+        rgba(255, 252, 244, 0.26) 44%,
+        rgba(255, 255, 255, 0.05) 53%,
+        rgba(0, 0, 0, 0.20) 72%,
+        rgba(255, 250, 240, 0.14) 88%,
+        rgba(0, 0, 0, 0.12) 100%
+      ),
+      linear-gradient(180deg, #9a9b95 0%, #7c7d77 22%, #64655f 52%, #7a7b75 74%, #55564f 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+      0 0 0 1px #08090a,
+      0 34px 64px rgba(0, 0, 0, 0.68);
+  }
+  /* 面板上的脏污/指纹微层(让金属不是理工科纯色) */
+  .tp-face-grime {
+    background-image:
+      radial-gradient(34% 22% at 20% 80%, rgba(0, 0, 0, 0.10), transparent 72%),
+      radial-gradient(26% 18% at 76% 20%, rgba(0, 0, 0, 0.08), transparent 74%),
+      radial-gradient(18% 14% at 54% 97%, rgba(255, 255, 255, 0.05), transparent 70%);
+  }
+
+  /* ---------- 十字螺丝(四角固定) ---------- */
+  .tp-screw {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-image:
+      linear-gradient(0deg, transparent 44%, rgba(0, 0, 0, 0.78) 44% 56%, transparent 56%),
+      linear-gradient(90deg, transparent 44%, rgba(0, 0, 0, 0.78) 44% 56%, transparent 56%),
+      radial-gradient(circle at 34% 28%, #f2f6fa 0%, #b3bbc3 30%, #747c84 62%, #3a4047 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.65),
+      inset 0 1px 1px rgba(255, 255, 255, 0.55),
+      0 1px 2px rgba(0, 0, 0, 0.7);
+  }
+
+  /* ---------- 散热槽 / 通风口 ---------- */
+  .tp-vent {
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0 3px,
+      rgba(255, 255, 255, 0.06) 3px 4px,
+      rgba(0, 0, 0, 0.15) 4px 9px
+    );
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.07);
+    border-radius: 2px;
+  }
+
+  /* ---------- 运输键(金属键帽 + 真实键程) ---------- */
+  .tp-key {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    background-image:
+      /* 键帽顶面镜面高光 */
+      linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.07) 20%, transparent 44%),
+      /* 键帽横向拉丝 */
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.055) 0 1px, rgba(0, 0, 0, 0.06) 1px 2px),
+      linear-gradient(180deg, #757b83 0%, #4b5158 34%, #2c3136 60%, #1a1d21 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.75),
+      inset 0 -8px 11px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 3px 0 #07080a,
+      0 13px 20px rgba(0, 0, 0, 0.62);
+    transition: transform 70ms linear, box-shadow 90ms linear, filter 130ms ease;
+  }
+  .tp-key:hover {
+    filter: brightness(1.16);
+  }
+  .tp-key:focus-visible {
+    outline: 2px solid rgba(255, 190, 90, 0.75);
+    outline-offset: 2px;
+  }
+  /* 按下:整体下沉 3px,顶面阴影变浅(真的"压进去了") */
+  .tp-key:active {
+    transform: translateY(3px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.20),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.75),
+      0 0 0 #07080a,
+      0 3px 6px rgba(0, 0, 0, 0.5);
+  }
+  /* 键帽上的彩色标识条(PLAY 绿 / EJECT 琥珀 / CAL 蓝) */
+  .tp-key-cap {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  /* ---------- 刻字(凹刻:上方投影 + 下方微高光) ---------- */
+  .tp-engrave {
+    color: #e2e9ef;
+    text-shadow:
+      0 -1px 0 rgba(255, 255, 255, 0.30),
+      0 1px 1px rgba(0, 0, 0, 0.95);
+  }
+  /* 印刷字样(面板丝印:纯色 + 无光) */
+  .tp-print {
+    color: #1b1d1f;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  /* ---------- VFD 琥珀数码管显示 ---------- */
+  .tp-vfd {
+    background-image:
+      radial-gradient(130% 150% at 50% -20%, #2a1d08 0%, #150f06 58%, #0a0703 100%);
+    color: #ffbe4d;
+    text-shadow:
+      0 0 4px rgba(255, 178, 60, 0.95),
+      0 0 12px rgba(255, 146, 24, 0.55),
+      0 0 26px rgba(255, 120, 0, 0.28);
+    box-shadow:
+      inset 0 0 14px rgba(255, 146, 24, 0.20),
+      inset 0 0 0 1px rgba(255, 168, 48, 0.20),
+      0 0 20px rgba(255, 140, 20, 0.12);
+  }
+  /* 绿色 LED 数码显示(计数器用) */
+  .tp-vfd--g {
+    color: #8dffa8;
+    text-shadow:
+      0 0 4px rgba(140, 255, 168, 0.9),
+      0 0 12px rgba(60, 230, 120, 0.5),
+      0 0 24px rgba(40, 200, 90, 0.25);
+    box-shadow:
+      inset 0 0 14px rgba(70, 230, 120, 0.16),
+      inset 0 0 0 1px rgba(120, 255, 160, 0.18),
+      0 0 20px rgba(60, 220, 110, 0.10);
+  }
+  /* 独立 LED 灯珠(power / rec / nr) */
+  .tp-led {
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 2px rgba(255, 255, 255, 0.65),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.5),
+      0 0 6px currentColor,
+      0 0 13px currentColor;
+    background: radial-gradient(circle at 36% 30%, #fff 0%, currentColor 42%, rgba(0, 0, 0, 0.55) 100%);
+  }
+  .tp-led--off {
+    background: radial-gradient(circle at 36% 30%, #565c62 0%, #2a2e32 60%, #14171a 100%);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* ---------- 卡带仓:烟熏玻璃窗 + 磁带轴 ---------- */
+  .tp-bay {
+    background-image:
+      linear-gradient(180deg, rgba(6, 8, 10, 0.96) 0%, rgba(24, 27, 30, 0.92) 55%, rgba(9, 11, 13, 0.96) 100%);
+    box-shadow:
+      inset 0 0 26px rgba(0, 0, 0, 0.92),
+      inset 0 2px 3px rgba(0, 0, 0, 0.85),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.07),
+      0 0 0 1px rgba(0, 0, 0, 0.85),
+      0 1px 0 rgba(255, 255, 255, 0.10);
+    border-radius: 4px;
+  }
+  /* 玻璃反光(斜切高光 + 边缘亮线) */
+  .tp-bay-glass {
+    background-image:
+      linear-gradient(118deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 14%, transparent 28%, transparent 72%, rgba(255, 255, 255, 0.05) 100%),
+      radial-gradient(120% 60% at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%);
+  }
+  /* 磁带轴:卷带环 + 奶油色轮毂(切口只在轮毂半径内)+ 中心孔
+     图层顺序(上→下)= 中心孔 / 卷带环 / 切口 / 轮毂底 —— 卷带环画在切口
+     之上,把切口"裁"在轮毂范围内(否则会放射到边缘变成风车)。 */
+  .tp-reel {
+    border-radius: 50%;
+    background-image:
+      /* 1. 中心孔 */
+      radial-gradient(circle, #090a0b 0 10%, rgba(0, 0, 0, 0) 10.5%),
+      /* 2. 卷带环(不透明,把切口"裁"在轮毂半径内)+ 轮毂外沿亮圈 */
+      radial-gradient(circle, rgba(0, 0, 0, 0) 0 50%, #cfc6ae 50% 52%, #544837 52% 84%, #403626 84% 97%, #1b1610 97% 100%),
+      /* 3. 轮毂上的 6 道驱动切口(窄口才像磁带轮毂) */
+      repeating-conic-gradient(from 4deg, rgba(0, 0, 0, 0) 0deg 32deg, rgba(22, 18, 13, 0.95) 32deg 38deg),
+      /* 4. 轮毂底(奶油色盘面) */
+      radial-gradient(circle, #f1ead7 0 34%, #ded6be 34% 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.65),
+      inset 0 4px 6px rgba(255, 255, 255, 0.14),
+      0 1px 7px rgba(0, 0, 0, 0.9);
+    animation: tp-reel-spin 3.4s linear infinite;
+  }
+  .tp-reel--slow { animation-duration: 6.4s; }
+  /* 压带轮/导带轮(白色小滚轮) */
+  .tp-roller {
+    border-radius: 50%;
+    background-image: radial-gradient(circle at 34% 30%, #f6f8fa 0%, #c2c8cd 42%, #6b7278 78%, #3d4247 100%);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.8);
+  }
+  /* 两轴之间缠着的磁带 */
+  .tp-tape {
+    background-image: linear-gradient(180deg, #3a3227 0%, #1d1812 48%, #2c241b 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+      0 1px 3px rgba(0, 0, 0, 0.85);
+  }
+
+  /* ---------- VU 表(段式 LED 阶梯;颜色按刻度位置固定) ---------- */
+  .tp-vu {
+    background-image:
+      /* 面板丝印的红色峰值刻度区(静止不动) */
+      linear-gradient(90deg, transparent 0 76%, rgba(255, 74, 50, 0.22) 76% 100%),
+      linear-gradient(180deg, #1b1e13 0%, #0a0c07 100%);
+    box-shadow:
+      inset 0 0 8px rgba(0, 0, 0, 0.92),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.85),
+      0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .tp-vu-fill {
+    /* 亮段:绿色区 → 琥珀 → 红(用固定 180px 背景尺寸让色阶跟着刻度走,
+       而不是跟着当前宽度走 —— 这才像真的 LED 阶梯表) */
+    background-image:
+      repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0 1px, transparent 1px 4px),
+      linear-gradient(90deg, #3fbe4e 0%, #6fd452 52%, #b8cf45 74%, #f0a02c 88%, #ef4a2c 100%);
+    background-size: 180px 100%, 180px 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px rgba(130, 215, 90, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    animation: tp-vu-l 2.6s ease-in-out infinite;
+  }
+  .tp-vu-fill--r { animation: tp-vu-r 3.1s ease-in-out infinite; }
+
+  /* ---------- 贴纸 / 标签 / 警示条 / 条码 ---------- */
+  .tp-label {
+    background-image:
+      linear-gradient(180deg, #f4efe0 0%, #e2dbc6 100%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.025) 3px 6px);
+    color: #23241f;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 3px 8px rgba(0, 0, 0, 0.5);
+  }
+  .tp-label--taped { transform: rotate(-1.15deg); }
+  .tp-hazard {
+    background-image: repeating-linear-gradient(
+      45deg,
+      #e8bb1e 0 9px,
+      #17181a 9px 18px
+    );
+  }
+  .tp-barcode {
+    background-image: repeating-linear-gradient(
+      90deg,
+      #141517 0 2px, transparent 2px 3px,
+      #141517 3px 4px, transparent 4px 8px,
+      #141517 8px 9px, transparent 9px 10px,
+      #141517 10px 13px, transparent 13px 15px,
+      #141517 15px 16px, transparent 16px 21px
+    );
+  }
+  /* 朋克胶带(斜贴的绝缘胶布) */
+  .tp-duct {
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.09) 0 2px,
+      rgba(0, 0, 0, 0.16) 2px 7px
+    );
+    background-color: #1f2226;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 2px 5px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ---------- 机架小面板(原内联设置抽屉的新外壳) ---------- */
+  .tp-rack {
+    background-image:
+      linear-gradient(180deg, rgba(38, 42, 46, 0.96) 0%, rgba(20, 22, 25, 0.97) 100%),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.75),
+      0 14px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ---------- 烟熏亚克力面板(菜单/简报的内容容器) ---------- */
+  .tp-panel {
+    background-image:
+      linear-gradient(180deg, rgba(34, 31, 26, 0.74) 0%, rgba(12, 12, 12, 0.84) 100%);
+    border: 1px solid rgba(214, 182, 122, 0.22);
+    border-radius: 4px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 0 42px rgba(255, 170, 60, 0.045),
+      0 0 0 1px rgba(0, 0, 0, 0.6),
+      0 18px 42px rgba(0, 0, 0, 0.58);
+    backdrop-filter: blur(9px) saturate(1.06);
+    -webkit-backdrop-filter: blur(9px) saturate(1.06);
+  }
+  /* 磁带盒(任务卡/关卡列表项):面板 + 左侧色脊 */
+  .tp-case {
+    background-image:
+      linear-gradient(180deg, rgba(40, 36, 30, 0.9) 0%, rgba(16, 16, 16, 0.92) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.85);
+    border-radius: 3px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.09),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.8),
+      0 6px 16px rgba(0, 0, 0, 0.55);
+    transition: transform 120ms ease, box-shadow 150ms ease, filter 150ms ease;
+  }
+  .tp-case:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.8),
+      0 14px 26px rgba(0, 0, 0, 0.62),
+      0 0 24px rgba(255, 170, 60, 0.10);
+  }
+
+  /* ---------- CRT 监视器边框(简报里的 3D 预览 = 机箱上的小监视器) ---------- */
+  .tp-monitor {
+    position: relative;
+    background: #0a0b0c;
+    border: 1px solid rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 2px 6px rgba(0, 0, 0, 0.9),
+      0 10px 26px rgba(0, 0, 0, 0.6),
+      0 0 26px rgba(255, 170, 60, 0.05);
+  }
+  /* 屏幕上的扫描线 + 暖色荧光 + 暗角(叠在画布之上) */
+  .tp-monitor-scan {
+    position: absolute;
+    inset: 5px;
+    border-radius: 2px;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.30) 2px 3px),
+      radial-gradient(120% 90% at 50% 45%, rgba(255, 176, 70, 0.05) 0%, rgba(0, 0, 0, 0.16) 62%, rgba(0, 0, 0, 0.55) 100%);
+    box-shadow: inset 0 0 34px rgba(0, 0, 0, 0.75);
+  }
+
+  /* ---------- CRT / VHS 叠加层 ---------- */
+  .tp-scan {
+    /* 阶段1: 扫描线收敛到设计系统令牌(3px 周期 / --crt-scan-alpha 0.11) */
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0 calc(var(--crt-scan-pitch) - 1px),
+      rgba(0, 0, 0, var(--crt-scan-alpha)) calc(var(--crt-scan-pitch) - 1px) var(--crt-scan-pitch)
+    );
+  }
+  .tp-grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+    background-size: 140px 140px;
+    animation: tp-grain-shift 0.9s steps(4) infinite;
+  }
+  .tp-vignette {
+    /* 阶段1: 暗角强度走令牌(--crt-vignette) */
+    background-image:
+      radial-gradient(
+        120% 78% at 50% 42%,
+        transparent 42%,
+        rgba(0, 0, 0, calc(var(--crt-vignette) * 0.7)) 78%,
+        rgba(0, 0, 0, var(--crt-vignette)) 100%
+      );
+  }
+  /* 缓慢走过的"走带/追踪"亮带(CRT 嗅味) */
+  .tp-tracking {
+    background-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.035) 42%,
+      rgba(255, 255, 255, 0.075) 50%,
+      rgba(255, 255, 255, 0.035) 58%,
+      transparent 100%
+    );
+    animation: tp-tracking-move 7.5s linear infinite;
+  }
+
+  /* ---------- 黑色阳极氧化铭牌(标题底板:钉在面板上的金属徽牌) ---------- */
+  .tp-nameplate {
+    background-image:
+      /* 顶边一条亮线(阳极氧化的边缘反光) */
+      linear-gradient(180deg, rgba(255, 255, 255, 0.13) 0 1px, transparent 1px),
+      /* 底板细颗粒 */
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, #26292d 0%, #15181b 52%, #0a0c0e 100%);
+    border: 1px solid rgba(0, 0, 0, 0.92);
+    border-radius: 4px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.85),
+      inset 0 0 26px rgba(0, 0, 0, 0.6),
+      0 2px 5px rgba(0, 0, 0, 0.6),
+      0 0 34px rgba(255, 150, 40, 0.07);
+  }
+  /* 顶部黑色装饰条(90 年代机架器材的常规做法:黑塑压条 + 浅色丝印) */
+  .tp-trim {
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0 1px, transparent 1px),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.028) 0 1px, rgba(0, 0, 0, 0.10) 1px 4px),
+      linear-gradient(180deg, #26292c 0%, #171a1d 55%, #0d0f11 100%);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ---------- 标题:冲压金属字 + 琥珀底光 ---------- */
+  .tp-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Narrow', system-ui, sans-serif;
+    letter-spacing: 0.045em;
+    background-image: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f2f7fc 28%,
+      #a8b6c2 47%,
+      #eaf2f9 55%,
+      #8f9caa 76%,
+      #6d7a86 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter:
+      drop-shadow(0 1px 0 rgba(0, 0, 0, 0.95))
+      drop-shadow(0 3px 4px rgba(0, 0, 0, 0.85))
+      drop-shadow(0 0 22px rgba(255, 150, 40, 0.28));
+  }
+  /* 斜杠:琥珀色单独一层(标题里唯一的暖色焦点) */
+  .tp-title-slash {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Narrow', system-ui, sans-serif;
+    letter-spacing: 0;
+    padding: 0 0.06em;
+    background-image: linear-gradient(180deg, #ffe6a8 0%, #ffb03a 46%, #c8721a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter:
+      drop-shadow(0 1px 0 rgba(0, 0, 0, 0.85))
+      drop-shadow(0 0 18px rgba(255, 150, 40, 0.65));
+  }
+  /* 副标题:丝印 + 轻微色散(红青分离,磁带信号味) */
+  .tp-subtitle {
+    color: #d7e0e8;
+    text-shadow:
+      -1px 0 0 rgba(255, 60, 60, 0.30),
+      1px 0 0 rgba(60, 200, 255, 0.30),
+      0 1px 0 rgba(0, 0, 0, 0.9);
+  }
+}
+
+@keyframes tp-reel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes tp-vu-l {
+  0%, 100% { width: 34%; }
+  12% { width: 72%; }
+  26% { width: 48%; }
+  40% { width: 88%; }
+  55% { width: 58%; }
+  70% { width: 80%; }
+  84% { width: 42%; }
+}
+@keyframes tp-vu-r {
+  0%, 100% { width: 42%; }
+  16% { width: 60%; }
+  30% { width: 91%; }
+  46% { width: 52%; }
+  62% { width: 74%; }
+  78% { width: 38%; }
+  92% { width: 66%; }
+}
+@keyframes tp-rec-blink {
+  0%, 44% { opacity: 1; }
+  45%, 100% { opacity: 0.18; }
+}
+@keyframes tp-grain-shift {
+  0% { background-position: 0 0; }
+  25% { background-position: -34px 18px; }
+  50% { background-position: 22px -26px; }
+  75% { background-position: -18px -12px; }
+  100% { background-position: 0 0; }
+}
+@keyframes tp-tracking-move {
+  0% { transform: translateY(-30%); }
+  100% { transform: translateY(130%); }
+}
+@keyframes tp-vfd-flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.72; }
+  98.4% { opacity: 1; }
+  99.1% { opacity: 0.85; }
+}
+@keyframes tp-power-breathe {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+.animate-tp-rec { animation: tp-rec-blink 1.05s steps(1, end) infinite; }
+.animate-tp-flicker { animation: tp-vfd-flicker 6.2s linear infinite; }
+.animate-tp-breathe { animation: tp-power-breathe 3.4s ease-in-out infinite; }
+
+/* 尊重"减少动态效果"偏好(无障碍) */
+@media (prefers-reduced-motion: reduce) {
+  .tp-reel, .tp-vu-fill, .tp-grain, .tp-tracking,
+  .animate-tp-rec, .animate-tp-flicker, .animate-tp-breathe,
+  .crt-flicker, .crt-sweep, .crt-scanband, .crt-caret::after, .crt-node, .crt-boot {
+    animation: none !important;
+  }
+}
+
+/* === Mission-ending black fade (per user request) === */
+@keyframes fade-to-black {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes menu-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes star-drift {
+  from { background-position-y: 0; }
+  to { background-position-y: -140px; }
+}
+.animate-menu-in { animation: menu-fade-in 0.55s ease both; }
+.animate-menu-in-2 { animation: menu-fade-in 0.55s 0.12s ease both; }
+.animate-menu-in-3 { animation: menu-fade-in 0.55s 0.24s ease both; }
+/* Slow drifting starfield dots for menu backgrounds. */
+.starfield {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(160, 210, 255, 0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 60%, rgba(160, 210, 255, 0.35) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 45% 85%, rgba(190, 230, 255, 0.4) 50%, transparent 51%),
+    radial-gradient(1px 1px at 85% 20%, rgba(160, 210, 255, 0.3) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 10% 75%, rgba(190, 230, 255, 0.35) 50%, transparent 51%);
+  background-size: 240px 240px;
+  animation: star-drift 24s linear infinite;
+}

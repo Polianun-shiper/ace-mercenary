@@ -1,0 +1,93 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+local-*
+.claude
+.z-ai-config
+*.log
+dev.log
+dev.out.log
+test
+prompt
+
+server.log
+# Skills directory
+/skills/
+
+# 4K 素材母片(UE .uasset 抠出 + 编辑器导出),不入库;
+# 成品由 scripts/mwam-import.mjs 生成到 public/textures/ktx2/terrain/ 再入库。
+/textures-src/
+# IndexTTS 配音工具产物(不入库;入库的是 public/audio/radio/*.mp3 与 manifest)
+/download/tts/*
+!/download/tts/voice-plan.json
+!/download/tts/voices.json
+
+# UI 验收截图(scripts/ui-shot.mjs 产物,本地查验用,不入库)
+/.shots/
+
+# === 公开仓库不上传的部分 (§370) =============================================
+/public/
+/download/
+/blender/
+/dist-single/
+/dist-test/
+/dist-editor/
+/dist/
+/tmp/
+*.pid
+*.log
+db/custom.db
+# === 其它会话/工具留下的产物 (§370) ==========================================
+tool-results/
+beifen/
+upload/
+.vegdl/
+.test-build/
+.zcode/
+dist-editor-test/
+.ffmpeg-static-*/
+/scripts/_*.json
+/scripts/*.log
+/scripts/_*.mjs
+*.bak-*
+*.bak
+.zscripts/dev.pid

@@ -1,0 +1,16 @@
+# 素材许可（Assets License）
+
+本仓库的**源代码**按根目录 `LICENSE`（MIT）授权。
+
+但以下内容**不在 MIT 范围内，保留所有权利（All rights reserved）**，未经书面许可不得再分发、商用或用于训练数据集：
+
+- `public/audio/**` —— 自制/委托录制的语音、音乐、音效
+- `public/models/**`、`public/textures/**`、`public/custom-maps/**` —— 自制与委托制作的模型、贴图、地形数据
+- `blender/**`、`download/**` —— 工程源文件与离线素材
+
+第三方素材保留其原始许可，署名见：
+- `public/basis/README.md`、`public/draco/README.md`
+- `public/textures/veg/LICENSES.txt`（CC0 植被贴片等）
+- 音频目录内随附的许可说明文件
+
+游戏名称、Logo 与角色/任务文本的商标与著作权同样保留。

@@ -1,0 +1,81 @@
+{
+  "source": "public/audio/engine_throttle.wav",
+  "durationSec": 9.62,
+  "sampleRate": 48000,
+  "peak": 0.2579478919506073,
+  "loopSec": 1.2,
+  "bands": [
+    {
+      "key": "idle",
+      "thr": 0,
+      "label": "怠速",
+      "startSec": 0,
+      "endSec": 1.2,
+      "level": 0.069,
+      "stability": 0.0842
+    },
+    {
+      "key": "t15",
+      "thr": 0.15,
+      "label": "小推力",
+      "startSec": 0.54,
+      "endSec": 1.74,
+      "level": 0.234,
+      "stability": 0.1704
+    },
+    {
+      "key": "t30",
+      "thr": 0.3,
+      "label": "巡航低",
+      "startSec": 5.18,
+      "endSec": 6.38,
+      "level": 0.354,
+      "stability": 0.056
+    },
+    {
+      "key": "t45",
+      "thr": 0.45,
+      "label": "巡航中",
+      "startSec": 1.82,
+      "endSec": 3.02,
+      "level": 0.446,
+      "stability": 0.0497
+    },
+    {
+      "key": "t60",
+      "thr": 0.6,
+      "label": "巡航高",
+      "startSec": 6.98,
+      "endSec": 8.18,
+      "level": 0.497,
+      "stability": 0.0657
+    },
+    {
+      "key": "t72",
+      "thr": 0.72,
+      "label": "军用推力",
+      "startSec": 8.34,
+      "endSec": 9.54,
+      "level": 0.554,
+      "stability": 0.1226
+    },
+    {
+      "key": "t85",
+      "thr": 0.85,
+      "label": "加力初段",
+      "startSec": 8.42,
+      "endSec": 9.62,
+      "level": 0.55,
+      "stability": 0.1248
+    },
+    {
+      "key": "ab",
+      "thr": 1,
+      "label": "全加力",
+      "startSec": 8.72,
+      "endSec": 9.62,
+      "level": 0.545,
+      "stability": 0.0993
+    }
+  ]
+}
